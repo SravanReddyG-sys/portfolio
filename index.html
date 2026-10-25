@@ -1,106 +1,501 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - Sravan Reddy G</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #f5f7ff, #e8f0ff);
-            color: #2f3e46;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sravan Kumar Reddy Guddigari — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B1120;
+    --bg-alt: #0E1729;
+    --surface: #121B2E;
+    --surface-2: #16213A;
+    --line: #223050;
+    --text: #E6ECF5;
+    --muted: #8B98AF;
+    --accent: #4FD1C5;
+    --accent-dim: #2E6E68;
+    --amber: #F0A742;
+    --radius: 10px;
+    --maxw: 1040px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-            padding: 30px;
-        }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection{ background: var(--accent); color: #04211E; }
 
-        h1 {
-            color: #1d3557;
-            text-align: center;
-            margin-bottom: 10px;
-            font-size: 2rem;
-        }
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 
-        .intro {
-            text-align: center;
-            color: #5b6b7a;
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
+  .wrap{ max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
 
-        .photo-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(11,17,32,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 64px;
+  }
+  .brand{
+    font-family: var(--mono); font-size: 14px; color: var(--text);
+    letter-spacing: 0.02em;
+  }
+  .brand span{ color: var(--accent); }
+  .navlinks{ display:flex; gap: 28px; list-style:none; margin:0; padding:0; }
+  .navlinks a{
+    color: var(--muted); font-family: var(--mono); font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .navlinks a:hover{ color: var(--accent); text-decoration:none; }
+  .navlinks .num{ color: var(--accent-dim); }
+  @media (max-width: 640px){ .navlinks{ display:none; } }
 
-        img {
-            width: 200px;
-            border-radius: 15%;
-            border: 4px solid #dbeafe;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-        }
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    padding: 96px 0 88px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  #netCanvas{
+    position:absolute; inset:0; width:100%; height:100%;
+    opacity: 0.55;
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:2; }
+  .eyebrow{
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    display:flex; align-items:center; gap:10px; margin-bottom: 22px;
+  }
+  .eyebrow::before{
+    content:""; width:8px; height:8px; border-radius:50%;
+    background: var(--accent); box-shadow: 0 0 0 4px rgba(79,209,197,0.15);
+    animation: blink 2.4s ease-in-out infinite;
+  }
+  @keyframes blink{ 0%,100%{ opacity:1;} 50%{ opacity:0.35;} }
 
-        h2 {
-            color: #4361ee;
-            border-bottom: 2px solid #dbeafe;
-            padding-bottom: 6px;
-            margin-top: 24px;
-        }
+  .hero h1{
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.12;
+    margin: 0 0 18px;
+    max-width: 15ch;
+  }
+  .hero h1 .accent{ color: var(--accent); }
+  .hero p.lede{
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 56ch;
+    margin: 0 0 34px;
+  }
 
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+  .termline{
+    font-family: var(--mono); font-size: 14px; color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .termline .prompt{ color: var(--accent); }
+  .cursor{
+    display:inline-block; width: 8px; height: 1em; background: var(--accent);
+    margin-left: 2px; vertical-align: -2px;
+    animation: caret 1s steps(1) infinite;
+  }
+  @keyframes caret{ 50%{ opacity:0; } }
 
-        li {
-            margin-bottom: 10px;
-            padding: 8px 10px;
-            background: #f8fbff;
-            border-left: 4px solid #4361ee;
-            border-radius: 6px;
-        }
+  .stat-row{
+    display:flex; flex-wrap:wrap; gap: 10px; margin-top: 30px;
+  }
+  .stat-chip{
+    font-family: var(--mono); font-size: 12.5px;
+    border: 1px solid var(--line); background: var(--surface);
+    color: var(--muted);
+    padding: 7px 12px; border-radius: 999px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .stat-chip b{ color: var(--text); font-weight: 600; }
+  .stat-chip .dot{ width:6px; height:6px; border-radius:50%; background: var(--accent); }
 
-        p {
-            line-height: 1.6;
-        }
-    </style>
+  .cta-row{ display:flex; gap: 14px; margin-top: 40px; flex-wrap: wrap; }
+  .btn{
+    font-family: var(--mono); font-size: 13.5px;
+    padding: 12px 20px; border-radius: 8px;
+    border: 1px solid var(--line);
+    color: var(--text);
+    transition: border-color .2s ease, transform .15s ease, background .2s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{ text-decoration:none; border-color: var(--accent); transform: translateY(-1px); }
+  .btn.primary{ background: var(--accent); color: #04211E; border-color: var(--accent); font-weight:600; }
+  .btn.primary:hover{ background: #62E0D4; }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding: 76px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{ display:flex; align-items:baseline; gap:14px; margin-bottom: 40px; }
+  .sec-tag{ font-family: var(--mono); font-size: 12.5px; color: var(--accent); letter-spacing:.08em; }
+  .sec-title{ font-family: var(--display); font-size: clamp(1.5rem,3vw,2rem); font-weight:600; margin:0; }
+  .sec-rule{ flex:1; height:1px; background: var(--line); }
+
+  .reveal{ opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; }
+  @media (max-width: 780px){ .about-grid{ grid-template-columns: 1fr; } }
+  .about-grid p{ color: var(--muted); margin: 0 0 16px; }
+  .about-grid p b{ color: var(--text); font-weight: 600; }
+
+  .tagcloud{ display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start; }
+  .tag{
+    font-family: var(--mono); font-size: 12px;
+    border:1px solid var(--line); border-radius: 6px;
+    padding: 6px 10px; color: var(--muted); background: var(--surface);
+    position: relative;
+  }
+  .tag.core{ color: var(--amber); border-color: rgba(240,167,66,0.35); }
+  .tag.lang{ color: var(--accent); border-color: rgba(79,209,197,0.35); }
+
+  .subhead{ font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing:.08em; margin: 22px 0 10px; }
+
+  /* ---------- PROJECTS ---------- */
+  .proj-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 28px 26px;
+    margin-bottom: 22px;
+    position: relative;
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .proj-card:hover{ border-color: var(--accent-dim); transform: translateY(-2px); }
+  .proj-card::before{
+    content:""; position:absolute; left:0; top:24px; bottom:24px; width:3px;
+    background: var(--accent); border-radius:0 3px 3px 0; opacity:.7;
+  }
+  .proj-top{ display:flex; justify-content:space-between; align-items:flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+  .proj-title{ font-family: var(--display); font-size: 1.28rem; font-weight:600; margin:0; }
+  .proj-link{ font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+  .proj-stack{ display:flex; flex-wrap:wrap; gap:6px; margin: 10px 0 16px; }
+  .proj-stack span{
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    border:1px solid var(--line); padding: 3px 8px; border-radius: 5px;
+  }
+  .proj-card ul{ margin: 0; padding-left: 18px; color: var(--muted); }
+  .proj-card li{ margin-bottom: 8px; }
+  .proj-card li::marker{ color: var(--accent); }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-item{ display:grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .edu-item:first-child{ border-top:none; }
+  .edu-year{ font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  .edu-name{ font-weight:600; margin:0 0 4px; font-family: var(--display); font-size: 1.05rem; }
+  .edu-meta{ color: var(--muted); font-size: .92rem; margin:0; }
+  @media (max-width: 560px){ .edu-item{ grid-template-columns: 1fr; gap:4px; } }
+
+  /* ---------- ACHIEVEMENTS / CERTS ---------- */
+  .pill-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .pill{
+    display:flex; gap:12px; align-items:flex-start;
+    background: var(--surface); border:1px solid var(--line); border-radius: var(--radius);
+    padding: 18px 20px; flex: 1 1 260px;
+  }
+  .pill .ic{ color: var(--amber); font-family: var(--mono); font-size: 18px; line-height:1; }
+  .pill p{ margin:0; color: var(--muted); font-size: .92rem; }
+  .pill .pill-title{ color: var(--text); font-weight:600; display:block; margin-bottom:4px; font-family: var(--display); font-size: .98rem; }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-inner{ display:flex; justify-content:space-between; align-items:flex-end; gap: 24px; flex-wrap: wrap; }
+  .contact-inner h2{ font-family: var(--display); font-size: clamp(1.6rem,3.6vw,2.4rem); margin: 0 0 12px; max-width: 16ch; }
+  .contact-inner p{ color: var(--muted); max-width: 44ch; margin:0; }
+  .contact-links{ display:flex; flex-direction:column; gap: 10px; font-family: var(--mono); font-size: 14px; }
+  .contact-links a{ color: var(--text); }
+  .contact-links a:hover{ color: var(--accent); }
+  .contact-links .lbl{ color: var(--muted); font-size: 11px; letter-spacing: .08em; }
+
+  footer{ padding: 28px 0 40px; }
+  footer .wrap{ display:flex; justify-content:space-between; color: var(--muted); font-family: var(--mono); font-size: 12px; flex-wrap:wrap; gap:8px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
 </head>
 <body>
-    <main class="container">
-        <h1>Sravan Reddy G</h1>
-        <p class="intro">Welcome to my resume page. Here you can find information about my education, skills, and contact details.</p>
 
-        <div class="photo-wrapper">
-            <img src="passportSizePhotoSravan.jpg" alt="Sravan Reddy G">
+<header>
+  <nav class="wrap">
+    <div class="brand">skrg<span>@</span>portfolio<span>:~$</span></div>
+    <ul class="navlinks">
+      <li><a href="#about"><span class="num">01</span> about</a></li>
+      <li><a href="#projects"><span class="num">02</span> projects</a></li>
+      <li><a href="#education"><span class="num">03</span> education</a></li>
+      <li><a href="#contact"><span class="num">04</span> contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <canvas id="netCanvas"></canvas>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">OPEN TO SOFTWARE ENGINEERING INTERNSHIPS</div>
+    <h1>Sravan Kumar Reddy Guddigari <span class="accent">builds systems, not just screens.</span></h1>
+    <p class="lede">Integrated M.Tech CSE student at VIT-AP, wiring together Java, Spring Boot and Angular into full-stack platforms that route real things — food, orders, people — to where they need to go.</p>
+
+    <div class="termline"><span class="prompt">$</span> whoami <span class="cursor"></span></div>
+
+    <div class="stat-row">
+      <div class="stat-chip"><span class="dot"></span> CGPA <b>9.36</b>/10</div>
+      <div class="stat-chip"><span class="dot"></span> Class of <b>2028</b></div>
+      <div class="stat-chip"><span class="dot"></span> Top 10 <b>2× running</b></div>
+      <div class="stat-chip"><span class="dot"></span> Stack <b>Java · Spring Boot · Angular</b></div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">View projects →</a>
+      <a class="btn" href="mailto:sravanreddyguddigari@gmail.com">Get in touch</a>
+      <a class="btn" href="https://github.com/SravanReddyG-sys" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">01</span><h2 class="sec-title">About</h2><div class="sec-rule"></div></div>
+    <div class="about-grid reveal">
+      <div>
+        <p>I'm a <b>full-stack developer in training</b> — the kind who's just as comfortable tracing a slow query in MySQL as wiring up an Angular form. My two flagship projects both share a pattern: take something surplus or disorganized (spare food, farm produce) and build the routing logic to get it to the right place.</p>
+        <p>Underneath the frameworks, I care about the fundamentals: how the OS schedules the process, how the network gets the packet there, how the schema should actually be shaped. That's the layer I keep coming back to.</p>
+        <p>Currently based in <b>Amaravati, Andhra Pradesh</b>, and looking for an internship where I can apply this end-to-end.</p>
+      </div>
+      <div>
+        <div class="subhead">languages & web</div>
+        <div class="tagcloud">
+          <span class="tag lang">Java</span>
+          <span class="tag lang">Python</span>
+          <span class="tag lang">R</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Bootstrap</span>
         </div>
+        <div class="subhead">frameworks, data & tools</div>
+        <div class="tagcloud">
+          <span class="tag">Spring Boot</span>
+          <span class="tag">Angular</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">MongoDB</span>
+          <span class="tag">Git/GitHub</span>
+          <span class="tag">Docker</span>
+          <span class="tag">Kubernetes</span>
+          <span class="tag">Android Studio</span>
+        </div>
+        <div class="subhead">core CS foundations</div>
+        <div class="tagcloud">
+          <span class="tag core">DSA</span>
+          <span class="tag core">OOPs</span>
+          <span class="tag core">Operating Systems</span>
+          <span class="tag core">Computer Networks</span>
+          <span class="tag core">DBMS</span>
+          <span class="tag core">Computer Architecture</span>
+          <span class="tag core">System Design</span>
+          <span class="tag core">Cloud Computing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <h2>Education</h2>
-        <ul>
-            <li>Integrated Mtech CSE - VIT-AP University</li>
-        </ul>
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">02</span><h2 class="sec-title">Projects</h2><div class="sec-rule"></div></div>
 
-        <h2>Skills</h2>
-        <ul>
-            <li>Programming Languages: Java, Python, JavaScript</li>
-            <li>Web Development: HTML, CSS, Angular, Spring Boot</li>
-            <li>Database Management: MySQL, MongoDB</li>
-            <li>Version Control: Git, GitHub</li>
-        </ul>
-        
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <h3 class="proj-title">Food Surplus Distribution System</h3>
+        <a class="proj-link" href="https://github.com/SravanReddyG-sys" target="_blank" rel="noopener">view source ↗</a>
+      </div>
+      <div class="proj-stack">
+        <span>Angular</span><span>Spring Boot</span><span>MySQL</span><span>Java</span><span>HTML</span><span>CSS</span><span>Bootstrap</span>
+      </div>
+      <ul>
+        <li>Full-stack platform connecting restaurants, hostels, and event organizers with surplus food to orphanages, old-age homes, and NGOs in need.</li>
+        <li>Separate workflows for donors, receivers, and logistics management, so each side of the exchange sees only what's relevant to them.</li>
+        <li>Volunteer-driven distribution module that routes surplus food to pedestrians and homeless individuals on the street — closing the last-mile gap that most donation platforms skip.</li>
+        <li>Backend on Spring Boot, frontend on Angular, for a responsive, real-time donation-matching experience.</li>
+      </ul>
+    </div>
 
-        <h2>Contact Information</h2>
-        <p><strong>Email:</strong> reddygsravan@gmail.com</p>
-        <p><strong>Phone:</strong> +91 7799545068</p>
-    </main>
+    <div class="proj-card reveal">
+      <div class="proj-top">
+        <h3 class="proj-title">NaturalFarms — E-commerce Platform</h3>
+        <a class="proj-link" href="https://github.com/SravanReddyG-sys" target="_blank" rel="noopener">view source ↗</a>
+      </div>
+      <div class="proj-stack">
+        <span>Angular</span><span>Spring Boot</span><span>MySQL</span>
+      </div>
+      <ul>
+        <li>Full-stack e-commerce web application to sell natural/farm products online, covering catalog browsing, cart, and order flows.</li>
+        <li>Reusable Angular components, routing, reactive forms, and a service-based architecture for maintainability.</li>
+        <li>Product browsing, shopping cart, and user-friendly navigation built for a smooth shopping experience.</li>
+        <li>RESTful APIs with Spring Boot backing a dynamic single-page Angular frontend.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-tag">03</span><h2 class="sec-title">Education</h2><div class="sec-rule"></div></div>
+    <div class="reveal">
+      <div class="edu-item">
+        <div class="edu-year">2023 — 2028</div>
+        <div>
+          <p class="edu-name">Vellore Institute of Technology (VIT) — Andhra Pradesh</p>
+          <p class="edu-meta">Integrated M.Tech, Computer Science and Engineering · CGPA 9.36 / 10</p>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-year">2023</div>
+        <div>
+          <p class="edu-name">Sri Chaitanya Junior College — Vijayawada</p>
+          <p class="edu-meta">Higher Secondary (Class 12), MPC · 97.9%</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subhead reveal" style="margin-top:34px;">achievements</div>
+    <div class="pill-row reveal">
+      <div class="pill">
+        <div class="ic">#</div>
+        <p><span class="pill-title">Top 10, two years running</span>Ranked in the Top 10 of the Integrated M.Tech CSE branch for two consecutive academic years — 5th rank, then 6th — for maintaining a strong CGPA.</p>
+      </div>
+      <div class="pill">
+        <div class="ic">⋯</div>
+        <p><span class="pill-title">Certifications</span>Currently pursuing relevant certifications — this space will be updated as they're completed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-inner reveal">
+    <div>
+      <h2>Let's build something that routes real things to real places.</h2>
+      <p>Open to software engineering internships and full-stack roles. Based in Amaravati, Andhra Pradesh, India — happy to work remote or relocate.</p>
+    </div>
+    <div class="contact-links">
+      <div><span class="lbl">EMAIL</span><br><a href="mailto:sravanreddyguddigari@gmail.com">sravanreddyguddigari@gmail.com</a></div>
+      <div><span class="lbl">PHONE</span><br><a href="tel:+917799545068">+91 77995 45068</a></div>
+      <div><span class="lbl">LINKEDIN</span><br><a href="https://www.linkedin.com/in/sravan-reddy-g-3546242b4/" target="_blank" rel="noopener">/in/sravan-reddy-g</a></div>
+      <div><span class="lbl">GITHUB</span><br><a href="https://github.com/SravanReddyG-sys" target="_blank" rel="noopener">/SravanReddyG-sys</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Sravan Kumar Reddy Guddigari</span>
+    <span>built with java-brain, spring-boot backend & an angular frontend</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el=> io.observe(el));
+
+  // Network diagram animation in hero — nodes + connecting edges,
+  // a nod to system design / architecture thinking.
+  const canvas = document.getElementById('netCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    const hero = canvas.parentElement;
+    W = canvas.width = hero.clientWidth;
+    H = canvas.height = hero.clientHeight;
+  }
+
+  function initNodes(){
+    const count = W < 700 ? 14 : 24;
+    nodes = Array.from({length: count}, () => ({
+      x: Math.random()*W,
+      y: Math.random()*H,
+      vx: (Math.random()-0.5) * 0.15,
+      vy: (Math.random()-0.5) * 0.15,
+      r: Math.random()*1.6 + 1.4
+    }));
+  }
+
+  function step(){
+    ctx.clearRect(0,0,W,H);
+    const linkDist = W < 700 ? 130 : 170;
+
+    for(const n of nodes){
+      if(!prefersReduced){
+        n.x += n.vx; n.y += n.vy;
+        if(n.x < 0 || n.x > W) n.vx *= -1;
+        if(n.y < 0 || n.y > H) n.vy *= -1;
+      }
+    }
+
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a = nodes[i], b = nodes[j];
+        const dx = a.x-b.x, dy = a.y-b.y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist < linkDist){
+          ctx.strokeStyle = `rgba(79,209,197,${0.16 * (1 - dist/linkDist)})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      ctx.fillStyle = 'rgba(79,209,197,0.75)';
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    if(!prefersReduced) requestAnimationFrame(step);
+  }
+
+  function start(){
+    resize(); initNodes(); step();
+  }
+  window.addEventListener('resize', ()=>{ resize(); initNodes(); if(prefersReduced) step(); });
+  start();
+</script>
+
 </body>
 </html>
